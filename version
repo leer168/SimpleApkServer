@@ -1,9 +1,9 @@
 {
 	"success": true,
 	"data": {
-	  "code": 6,
-	  "version" : "6",
+	  "code": 7,
+	  "version" : "7",
 	  "content": "None",
-	  "downloadUrl": "http://192.168.0.103:3000/paks/Assistant.6.apk"
+	  "downloadUrl": "http://115.28.178.225:3000/paks/Assistant.7.apk"
 	}
 }
