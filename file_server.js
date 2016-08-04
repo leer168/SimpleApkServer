@@ -13,10 +13,13 @@ app.use('/post', function(req, res) {
   fs.exists(full_path, function(is_exist){
     if(is_exist){
        fs.renameSync(req.files.userfile.path, full_path + req.files.userfile.name);
+       res.end("200");
+       console.log("res:", 200);
      } else {
       fs.mkdir(full_path, function(err) {
         if(!err)
           fs.renameSync(req.files.userfile.path, full_path + req.files.userfile.name);
+          res.end("200");
       });
      }
 
