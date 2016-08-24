@@ -10,20 +10,16 @@ app.use('/post', function(req, res) {
   console.log("req.body.dirname", req.body.dirname);
   var full_path = __dirname +'/file/' + req.body.dirname + "/";
   console.log("full_path", full_path);
-  fs.exists(full_path, function(is_exist){
-    if(is_exist){
+  var is_exists = fs.existsSync(full_path);
+  if(is_exists){
        fs.renameSync(req.files.userfile.path, full_path + req.files.userfile.name);
        res.end("200");
        console.log("res:", 200);
-     } else {
-      fs.mkdir(full_path, function(err) {
-        if(!err)
-          fs.renameSync(req.files.userfile.path, full_path + req.files.userfile.name);
-          res.end("200");
-      });
-     }
-
-  });
+  } else {
+    fs.mkdirSync(full_path);
+    fs.renameSync(req.files.userfile.path, full_path + req.files.userfile.name);
+    res.end("200");
+  }
  
   //console.log("body", req.body);
    // don't forget to delete all req.files when done
